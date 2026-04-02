@@ -38,29 +38,43 @@
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
-      z-index: 1000;
+      z-index: 9999;
       padding: 0 48px;
       height: 72px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      transition: background 0.4s, box-shadow 0.4s;
-    }
-    nav.scrolled {
-      background: rgba(15, 21, 32, 0.97);
-      box-shadow: 0 1px 0 rgba(192,154,82,0.2);
-      backdrop-filter: blur(12px);
+      background: #0f1520;
+      border-bottom: 1px solid rgba(192,154,82,0.15);
+      isolation: isolate;
     }
     .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nav-logo img {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
+    }
+    .nav-logo-text {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 26px;
+      font-size: 22px;
       font-weight: 700;
       color: var(--white);
       letter-spacing: 2px;
-      text-decoration: none;
     }
-    .nav-logo span { color: var(--gold); }
-    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-logo-text span { color: var(--gold); }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
     .nav-links a {
       font-size: 13px;
       font-weight: 400;
@@ -69,6 +83,7 @@
       color: rgba(255,255,255,0.75);
       text-decoration: none;
       transition: color 0.2s;
+      white-space: nowrap;
     }
     .nav-links a:hover { color: var(--gold-light); }
     .nav-cta {
@@ -84,6 +99,8 @@
       cursor: pointer;
       text-decoration: none;
       transition: background 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
     .nav-cta:hover { background: var(--gold-light); }
 
@@ -826,8 +843,11 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
-      nav { padding: 0 24px; }
+      nav { padding: 0 20px; height: 64px; }
       .nav-links { display: none; }
+      .nav-logo img { height: 32px; }
+      .nav-logo-text { font-size: 18px; }
+      .nav-cta { padding: 8px 14px; font-size: 11px; }
       .hero-content { padding: 100px 24px 80px; }
       .hero-stats { display: none; }
       .sobre { grid-template-columns: 1fr; padding: 80px 24px; gap: 48px; }
@@ -847,7 +867,10 @@
 
   <!-- NAV -->
   <nav id="navbar">
-    <a href="#" class="nav-logo">ARG<span>E</span>CON</a>
+    <a href="#" class="nav-logo">
+      <img src="logo.png" alt="Argecon">
+      <span class="nav-logo-text">ARG<span>E</span>CON</span>
+    </a>
     <ul class="nav-links">
       <li><a href="#sobre">Sobre</a></li>
       <li><a href="#portfolio">Empreendimentos</a></li>
@@ -979,7 +1002,7 @@
           <path d="M26 21v-4M26 35v-4M21 26h-4M35 26h-4" stroke="#c09a52" stroke-width="1.2" stroke-linecap="round"/>
         </svg>
         <h3 class="servico-title">Administração de Imóveis</h3>
-        <p class="servico-text">Gerenciamos imóveis para aluguel por temporada com profissionalismo e transparência. Cuidamos do seu patrimônio como se fosse nosso, porque entendemos o valor de cada conquista.</p>
+        <p class="servico-text">Gerenciamos nossos próprios imóveis para aluguel por temporada e aluguel anual com profissionalismo e transparência. Cuidamos do seu patrimônio como se fosse nosso, porque entendemos o valor de cada conquista.</p>
       </div>
     </div>
   </section>
