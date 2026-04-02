@@ -943,7 +943,7 @@
         <div class="hero-stat-label">Anos de<br>Mercado</div>
       </div>
       <div class="hero-stat-item">
-        <div class="hero-stat-num">8</div>
+        <div class="hero-stat-num" id="count-unidades">0</div>
         <div class="hero-stat-label">Unidades<br>Entregues</div>
       </div>
       <div class="hero-stat-item">
@@ -988,11 +988,11 @@
       <div class="sobre-card-main">
         <div class="sobre-card-grid">
           <div class="sobre-card-item">
-            <div class="sobre-card-num">2019</div>
+            <div class="sobre-card-num" id="count-ano">2019</div>
             <div class="sobre-card-desc">Fundação<br>da empresa</div>
           </div>
           <div class="sobre-card-item">
-            <div class="sobre-card-num">8</div>
+            <div class="sobre-card-num" id="count-unidades2">0</div>
             <div class="sobre-card-desc">Unidades<br>entregues</div>
           </div>
           <div class="sobre-card-item">
@@ -1000,7 +1000,7 @@
             <div class="sobre-card-desc">Itapema<br>Santa Catarina</div>
           </div>
           <div class="sobre-card-item">
-            <div class="sobre-card-num">3</div>
+            <div class="sobre-card-num" id="count-membros">0</div>
             <div class="sobre-card-desc">Membros da<br>família Argenton</div>
           </div>
         </div>
@@ -1241,6 +1241,54 @@
       });
     }, { threshold: 0.12 });
     reveals.forEach(el => observer.observe(el));
+
+    // Animação de contagem — Unidades Entregues
+    function animateCount(el, target, duration, startVal = 0) {
+      let current = startVal;
+      const range = target - startVal;
+      const step = Math.ceil(duration / range);
+      const timer = setInterval(() => {
+        current++;
+        el.textContent = current;
+        if (current >= target) {
+          el.textContent = target;
+          clearInterval(timer);
+        }
+      }, step);
+    }
+
+    const countEl = document.getElementById('count-unidades');
+    const countObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCount(countEl, 8, 1200);
+          countObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    countObserver.observe(countEl);
+
+    // Animação de contagem — Seção Sobre
+    const sobreNums = [
+      { id: 'count-ano',       target: 2019, duration: 1800, start: 1994 },
+      { id: 'count-unidades2', target: 8,    duration: 1200, start: 0 },
+      { id: 'count-membros',   target: 3,    duration: 900,  start: 0 },
+    ];
+
+    sobreNums.forEach(({ id, target, duration, start }) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.textContent = start;
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCount(el, target, duration, start);
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      obs.observe(el);
+    });
   </script>
 </body>
 </html>
