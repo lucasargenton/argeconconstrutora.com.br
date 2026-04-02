@@ -304,7 +304,20 @@
       to   { transform: rotate(360deg); }
     }
     @media (max-width: 768px) {
-      .hero-logo-wrapper { display: none; }
+      .hero-logo-wrapper {
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: none;
+        display: flex;
+        justify-content: center;
+        margin: 40px auto 0;
+        width: 100%;
+      }
+      .hero-logo-ring { width: 220px; height: 220px; }
+      .hero-logo-ring-2 { width: 185px; height: 185px; }
+      .hero-logo-ring-dots { width: 220px; height: 220px; }
+      .hero-logo-img { width: 140px; height: 140px; }
     }
 
     /* ── SOBRE ── */
@@ -848,7 +861,7 @@
       .nav-logo img { height: 32px; }
       .nav-logo-text { font-size: 18px; }
       .nav-cta { padding: 8px 14px; font-size: 11px; }
-      .hero-content { padding: 100px 24px 80px; }
+      .hero-content { padding: 100px 24px 40px; }
       .hero-stats { display: none; }
       .sobre { grid-template-columns: 1fr; padding: 80px 24px; gap: 48px; }
       .servicos-section { padding: 80px 24px; }
@@ -1002,7 +1015,7 @@
           <path d="M26 21v-4M26 35v-4M21 26h-4M35 26h-4" stroke="#c09a52" stroke-width="1.2" stroke-linecap="round"/>
         </svg>
         <h3 class="servico-title">Administração de Imóveis</h3>
-        <p class="servico-text">Gerenciamos nossos próprios imóveis para aluguel por temporada e aluguel anual com profissionalismo e transparência. Cuidamos do seu patrimônio como se fosse nosso, porque entendemos o valor de cada conquista.</p>
+        <p class="servico-text">Gerenciamos imóveis para aluguel por temporada com profissionalismo e transparência. Cuidamos do seu patrimônio como se fosse nosso, porque entendemos o valor de cada conquista.</p>
       </div>
     </div>
   </section>
