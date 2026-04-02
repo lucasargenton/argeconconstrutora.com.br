@@ -38,7 +38,7 @@
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
-      z-index: 100;
+      z-index: 1000;
       padding: 0 48px;
       height: 72px;
       display: flex;
@@ -242,6 +242,52 @@
       width: 1px; height: 40px;
       background: linear-gradient(to bottom, rgba(192,154,82,0.6), transparent);
       animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    /* ── HERO LOGO ── */
+    .hero-logo-wrapper {
+      position: absolute;
+      right: 8%;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fadeUp 1s ease 0.4s both;
+    }
+    .hero-logo-ring {
+      position: absolute;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      border: 1px solid rgba(192,154,82,0.2);
+    }
+    .hero-logo-ring-2 {
+      position: absolute;
+      width: 270px; height: 270px;
+      border-radius: 50%;
+      border: 1px solid rgba(192,154,82,0.12);
+    }
+    .hero-logo-ring-dots {
+      position: absolute;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      border: 1px dashed rgba(192,154,82,0.1);
+      animation: rotateSlow 30s linear infinite;
+    }
+    .hero-logo-img {
+      width: 200px;
+      height: 200px;
+      object-fit: contain;
+      position: relative;
+      z-index: 2;
+      filter: drop-shadow(0 0 24px rgba(192,154,82,0.15));
+    }
+    @keyframes rotateSlow {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    @media (max-width: 768px) {
+      .hero-logo-wrapper { display: none; }
     }
 
     /* ── SOBRE ── */
@@ -802,7 +848,6 @@
     <a href="#" class="nav-logo">ARG<span>E</span>CON</a>
     <ul class="nav-links">
       <li><a href="#sobre">Sobre</a></li>
-      <li><a href="#servicos">Serviços</a></li>
       <li><a href="#portfolio">Empreendimentos</a></li>
       <li><a href="#contato">Contato</a></li>
     </ul>
@@ -845,6 +890,14 @@
         <div class="hero-stat-label">Família<br>Argenton</div>
       </div>
     </div>
+    <!-- LOGO DECORATIVA -->
+    <div class="hero-logo-wrapper">
+      <div class="hero-logo-ring"></div>
+      <div class="hero-logo-ring-2"></div>
+      <div class="hero-logo-ring-dots"></div>
+      <img src="logo.png" alt="Argecon" class="hero-logo-img">
+    </div>
+
     <div class="hero-scroll">
       <div class="scroll-line"></div>
       <span>Scroll</span>
