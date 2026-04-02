@@ -861,7 +861,28 @@
       .nav-logo img { height: 32px; }
       .nav-logo-text { font-size: 18px; }
       .nav-cta { padding: 8px 14px; font-size: 11px; }
-      .hero-content { padding: 100px 24px 40px; }
+      .hero {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+      }
+      .hero-content { padding: 90px 24px 20px; order: 2; width: 100%; }
+      .hero-logo-wrapper {
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: none;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        padding-top: 20px;
+        width: 100%;
+        order: 1;
+      }
+      .hero-logo-ring { width: 200px; height: 200px; }
+      .hero-logo-ring-2 { width: 165px; height: 165px; }
+      .hero-logo-ring-dots { width: 200px; height: 200px; }
+      .hero-logo-img { width: 130px; height: 130px; }
       .hero-stats { display: none; }
       .sobre { grid-template-columns: 1fr; padding: 80px 24px; gap: 48px; }
       .servicos-section { padding: 80px 24px; }
